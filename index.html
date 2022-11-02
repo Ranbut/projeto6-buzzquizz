@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/style.css">
     <title>BuzzQuizz</title>
+    <link rel="icon" href="page-icon.png">
 </head>
 
 <body>
@@ -19,7 +20,7 @@
             <div class="lista-quizzes escondido">
                 <div class="criar-quizz-container">
                     <p>Você não criou um quizz ainda :(</p>
-                    <button class="criar-quizz" onclick="criarQuizz">Criar Quizz</button>
+                    <button onclick="criarQuizz()">Criar Quizz</button>
                 </div>
             </div>
             <div class="criacao-nivel-quiz">
@@ -71,13 +72,17 @@
                 </form>
             </div>
         </div>
+        <div class="app-creator disable">
+            Adicionar elementos de criação de quizz
+        </div>
     </div>
     <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="./js/criacao-quizz.js"></script>
+    <script src="./scripts/criacao-quizz.js"></script>
+    <script src="scripts/app.js"></script>
 </body>
 
 </html>
