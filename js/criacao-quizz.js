@@ -14,6 +14,7 @@ function construirArrayNivel(e) {
   const urlImagemInputs = criacaoNivel.querySelectorAll('.url-imagem')
   const descricaoTextAreas = criacaoNivel.querySelectorAll('textarea')
   let levels = []
+  let existePeloMenosUmPercentual0 = false
 
   tituloNivelInputs.forEach((input, idx) => {
     if(input.value === '') return
@@ -30,8 +31,13 @@ function construirArrayNivel(e) {
     nivelObj.text = descricaoTextAreas[idx].value
     nivelObj.minValue = Number(percentualAcertoInputs[idx].value)
 
+    if (nivelObj.minValue === 0) existePeloMenosUmPercentual0 = true
+
     levels = [...levels, nivelObj]
   })
+
+  if(!existePeloMenosUmPercentual0) return false
+  
   console.log(levels)
   return levels
 }
