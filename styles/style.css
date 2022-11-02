@@ -35,7 +35,7 @@ body {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.app{
+.app, .app-creator{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,7 +65,7 @@ body {
     margin: auto;
 }
 
-.criar-quizz{
+.criar-quizz-container button{
     color: #EC362D;
     width: 151px;
     height: 40px;
@@ -74,4 +74,13 @@ body {
     text-align: center;
     border: 1px dashed #EC362D;
     border-radius: 50px;
+    transition: all 300ms linear;
+}
+
+.criar-quizz-container button:hover{
+    background-color: #ff9b95;
+}
+
+.disable{
+    display: none;
 }
