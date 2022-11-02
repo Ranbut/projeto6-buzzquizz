@@ -57,6 +57,16 @@ input[type=number] {
     height: 100%;
 }
 
+.pagina-inicial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    width: 100%;
+    padding: 0 18px;
+    background-color: green;
+}
+
 .criar-quizz-container{
     margin-top: 77px;
     box-sizing: border-box;
@@ -97,6 +107,7 @@ input[type=number] {
 
     display: flex;
     flex-direction: column;
+    /* align-items: center; */
     gap: 12px;
 }
 
@@ -111,6 +122,7 @@ input[type=number] {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+    justify-content: center;
 }
 
 .lista-quizzes .quiz {
@@ -124,10 +136,6 @@ input[type=number] {
     display: flex;
     align-items: flex-end;
     border-radius: 5px;
-}
-
-.simpsons {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('https://recreio.uol.com.br/media/_versions/animacoes/os_simpsons_capa_widemd.jpg');
 }
 
 /*Criação de Quizz*/

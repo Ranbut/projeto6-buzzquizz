@@ -4,7 +4,7 @@ function comparador() {
 }
 function pegarQuiz(id){
     //Quando o usuário clicar no quiz que deseja jogar, o onclick deve repassar o id do quiz, por enquanto o id está fixo em 1
-    id = 1;//remover essa linha depois
+    console.log(id)//remover essa linha depois
     const promessa = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`);
     promessa.then(exibirQuiz);
 }
@@ -41,6 +41,7 @@ function exibirQuiz(resposta){
             `;
         }
     }
+    containerExibicao.classList.remove('escondido')
 }
 function estaCorreto(elemento, id){
     const pai = elemento.parentNode;
