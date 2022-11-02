@@ -47,7 +47,7 @@ input[type=number] {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.app, .app-creator{
+.app{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -90,7 +90,9 @@ input[type=number] {
 
 /*Criação de Quizz*/
 
-.criacao-nivel-quiz {
+.criacao-nivel-quiz, 
+.criacao-informacao-quiz,
+.criacao-perguntas-quiz {
     display: flex;
     flex-direction: column;
     gap: 43px;
@@ -100,13 +102,17 @@ input[type=number] {
     margin-top: 63px;
 }
 
-.criacao-nivel-quiz h4 {
+.criacao-nivel-quiz h4, 
+.criacao-informacao-quiz h4,
+.criacao-perguntas-quiz h4 {
     font-weight: 700;
     font-size: 23px;
     line-height: 27px;
 }
 
-.criacao-nivel-quiz .container-forms {
+.criacao-nivel-quiz .container-forms, 
+.criacao-informacao-quiz .container-forms,
+.criacao-perguntas-quiz .container-forms {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -114,7 +120,9 @@ input[type=number] {
     width: 100%;
 }
 
-.criacao-nivel-quiz .container-forms .form-nivel {
+.criacao-nivel-quiz .container-forms .form-nivel,
+.criacao-informacao-quiz .container-forms .form-nivel,
+.criacao-perguntas-quiz .container-forms .form-nivel {
     display: flex;
     flex-direction: column;
     gap: 12px;
