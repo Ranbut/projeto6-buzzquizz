@@ -192,3 +192,112 @@ input[type=number] {
 .criar-quizz-container button:hover{
     background-color: #ff9b95;
 }
+/*exibição do quiz*/
+.containerExibicao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.divImagemQuiz{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    width: 100%;
+    height: 227px;
+    background-position: 50% 10%;;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.tituloQuiz{
+    font-size: 39px;
+    color: #fff;
+}
+.questao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 42px;
+    width: 759px;
+    height: 676px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+.caixaTitulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 689px;
+    height: 138px;
+    margin-bottom: 20px;
+}
+.tituloQuestao{
+    text-align: center;
+    font-size: 23px;
+    font-weight: 700;
+    color: #fff;
+}
+.opcoes{
+    width: 689px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+.imagemOpcao{
+    width: 330px;
+    height: 175px;
+    margin-bottom: 8px;
+}
+.textoOpcao{
+    color: #000;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+.esbranquicado{
+    opacity: 0.3;
+}
+.respostaCerta{
+    color: #009C22;
+}
+.respostaErrada{
+    color: #FF4B4B;
+}
+/*versão mobile*/
+@media (max-width: 1100px) {
+    .divImagemQuiz{
+        height: 142px;
+    }
+    .tituloQuiz{
+        font-size: 19px;
+    }
+    .questao{
+        width: 375px;
+        height: 436px;
+        margin-top: 24px;
+    }
+    .caixaTitulo{
+        width: 340px;
+        height: 89px;
+        margin-bottom: 13px;
+    }
+    .tituloQuestao{
+        font-size: 19px;
+    }
+    .imagemOpcao{
+        width: 163px;
+        height: 113px;
+        margin-bottom: 5px;
+    }
+    .textoOpcao{
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    .opcoes{
+        width: 340px;
+    }
+}
