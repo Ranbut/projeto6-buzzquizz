@@ -26,25 +26,20 @@ function exibirQuiz(resposta){
                     <h2 class="tituloQuestao">${questoes[i].title}</h2>
                 </div>
                 <div class="opcoes">
-                    <div onclick="estaCorreto(this, ${i})">
-                        <img class="imagemOpcao" src="${opcoes[0].image}" alt="">
-                        <h3 class="textoOpcao">${opcoes[0].text}</h3>
-                    </div>
-                    <div onclick="estaCorreto(this, ${i})">
-                        <img class="imagemOpcao" src="${opcoes[1].image}" alt="">
-                        <h3 class="textoOpcao">${opcoes[1].text}</h3>
-                    </div>
-                    <div onclick="estaCorreto(this, ${i})">
-                        <img class="imagemOpcao" src="${opcoes[2].image}" alt="">
-                        <h3 class="textoOpcao">${opcoes[2].text}</h3>
-                    </div>
-                    <div onclick="estaCorreto(this, ${i})">
-                        <img class="imagemOpcao" src="${opcoes[3].image}" alt="">
-                        <h3 class="textoOpcao">${opcoes[3].text}</h3>
-                    </div>
+                    
                 </div>
             </div>
         `;
+        for(let j = 0; j < opcoes.length; j++){
+            const pai = document.getElementById(i);
+            const opcao = pai.children[1];
+            opcao.innerHTML += `
+                <div onclick="estaCorreto(this, ${i})">
+                    <img class="imagemOpcao" src="${opcoes[j].image}" alt="">
+                    <h3 class="textoOpcao">${opcoes[j].text}</h3>
+                </div>
+            `;
+        }
     }
 }
 function estaCorreto(elemento, id){
@@ -55,7 +50,6 @@ function estaCorreto(elemento, id){
           return true;
         }
     });
-    console.log(certo);
     for(let i = 0; i < 4; i++){
         pai.children[i].removeAttribute("onclick");
         if(pai.children[i] !== elemento){
