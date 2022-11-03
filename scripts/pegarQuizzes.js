@@ -1,13 +1,14 @@
 const BASE_URL = 'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes'
-
 function pegarQuizzes (){
   const res = axios.get(BASE_URL);
   res.then((res) => renderizarQuizzes(res.data))
 }
 
 function renderizarQuizzes(quizzes) {
+  const QUIZZES_USUARIO_STORAGE_KEY = 'quizzes-usuario'
+
   // Todos os quizzes
-  const listaQuizzes = document.querySelector('.lista-quizzes')
+  const listaQuizzes = document.querySelector('.todos-quizzes .lista-quizzes')
   listaQuizzes.innerHTML = ''
   quizzes.forEach(quiz => {
     const quizHTML = construirHTMLQuiz(quiz)
@@ -15,7 +16,26 @@ function renderizarQuizzes(quizzes) {
   });
 
   // Quizzes do Usuário
-  
+  const criarQuizzes = document.querySelector('.criar-quizz-container')
+  const containerUsuarioQuizzes = document.querySelector('.usuario-quizzes')
+  const quizzesUsuario = document.querySelector('.usuario-quizzes .lista-quizzes')
+  const existeQuizzesDoUsuario = localStorage.getItem(QUIZZES_USUARIO_STORAGE_KEY)
+  if(existeQuizzesDoUsuario) {
+    const idQuizzesUsuario = JSON.parse(localStorage.getItem(QUIZZES_USUARIO_STORAGE_KEY))
+
+    const listaQuizzesUsuario = quizzes.filter(quiz => (
+      idQuizzesUsuario.indexOf(quiz.id) !== -1
+    ))
+
+    listaQuizzesUsuario.forEach(quiz => {
+      const quizUsuarioHTML = construirHTMLQuiz(quiz)
+      quizzesUsuario.innerHTML += quizUsuarioHTML
+    })
+
+    criarQuizzes.classList.add('escondido')
+    containerUsuarioQuizzes.classList.remove('escondido')
+  }
+
 }
 
 function construirHTMLQuiz(quizz) {

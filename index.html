@@ -17,10 +17,16 @@
             BuzzQuizz
         </header>
         <div class="app">
-            <div class="pagina-inicial escondido">
+            <div class="pagina-inicial">
                 <div class="criar-quizz-container">
                     <p>Você não criou um quizz ainda :(</p>
                     <button onclick="criarQuizz()">Criar Quizz</button>
+                </div>
+                <div class="usuario-quizzes escondido">
+                    <h3>Seus Quizzes</h3>
+                    <div class="lista-quizzes">
+
+                    </div>
                 </div>
                 <div class="todos-quizzes">
                     <h3>Todos os Quizzes</h3>
@@ -113,7 +119,7 @@
                     <button type="submit" class=botao-confirmacao>Prosseguir pra criar níveis</button>
                 </form>
             </div>
-            <div class="criacao-nivel-quiz">
+            <div class="criacao-nivel-quiz escondido">
                 <h4>Agora, decida os níveis</h4>
                 <form class="container-forms">
                     <div class="form-nivel">

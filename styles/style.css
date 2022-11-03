@@ -99,7 +99,7 @@ input[type=number] {
 
 /* Lista de Quizzes */
 
-.todos-quizzes {
+.todos-quizzes, .usuario-quizzes {
     width: 100%;
     max-width: 1051px;
     margin-top: 77px;
@@ -110,7 +110,7 @@ input[type=number] {
     gap: 12px;
 }
 
-.todos-quizzes h3 {
+.todos-quizzes h3, .usuario-quizzes h3 {
     font-size: 20px;
     font-weight: 700;
 }
@@ -121,7 +121,7 @@ input[type=number] {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .quiz {
