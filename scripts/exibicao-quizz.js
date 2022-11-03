@@ -13,7 +13,7 @@ function exibirQuiz(resposta){
     elementoQueQueroQueApareca.scrollIntoView();
     const quiz = resposta.data;
     const containerExibicao = document.querySelector(".containerExibicao");
-    const paginaInicial = document.querySelector(".app");
+    const paginaInicial = document.querySelector(".pagina-inicial");
     paginaInicial.classList.add('escondido');
     containerExibicao.classList.remove('escondido');
     containerExibicao.innerHTML = `
@@ -110,7 +110,7 @@ function voltarHome(){
     const elementoQueQueroQueApareca = document.querySelector("header");
     elementoQueQueroQueApareca.scrollIntoView();
     const containerExibicao = document.querySelector(".containerExibicao");
-    const paginaInicial = document.querySelector(".app");
+    const paginaInicial = document.querySelector("pagina-inicial");
     paginaInicial.classList.remove('escondido');
     containerExibicao.classList.add('escondido');
 }
