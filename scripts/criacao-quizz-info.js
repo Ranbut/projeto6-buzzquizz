@@ -31,7 +31,7 @@ function criarPerguntas(){
         fecharElemento.classList.add("escondido");
         abrirElement.classList.remove("escondido");
     
-        for(let i = 2; i < qtdPerguntas; i++){
+        for(let i = 3; i < qtdPerguntas; i++){
             const templatePgt = 
             `<div class="form-nivel">
                 <div class="form-header">
