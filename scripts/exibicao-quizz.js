@@ -1,14 +1,14 @@
-let questoes;
+let questoes, niveis, quantAcertos = 0, quantErros = 0;
 function comparador() { 
 	return Math.random() - 0.5; 
 }
 function pegarQuiz(id){
-    //Quando o usuário clicar no quiz que deseja jogar, o onclick deve repassar o id do quiz, por enquanto o id está fixo em 1
-    console.log(id)//remover essa linha depois
     const promessa = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`);
     promessa.then(exibirQuiz);
 }
 function exibirQuiz(resposta){
+    const elementoQueQueroQueApareca = document.querySelector("header");
+    elementoQueQueroQueApareca.scrollIntoView();
     const quiz = resposta.data;
     const containerExibicao = document.querySelector(".containerExibicao");
     containerExibicao.innerHTML = `
@@ -17,7 +17,7 @@ function exibirQuiz(resposta){
         </div>
     `;
     questoes = quiz.questions;
-    for(let i = 0; i< questoes.length; i++){
+    for(let i = 0; i < questoes.length; i++){
         const opcoes = questoes[i].answers;
         opcoes.sort(comparador);
         containerExibicao.innerHTML += `
@@ -34,16 +34,19 @@ function exibirQuiz(resposta){
             const pai = document.getElementById(i);
             const opcao = pai.children[1];
             opcao.innerHTML += `
-                <div onclick="estaCorreto(this, ${i})">
+                <div onclick="estaCorreto(this, ${i}, ${opcoes[j].isCorrectAnswer})">
                     <img class="imagemOpcao" src="${opcoes[j].image}" alt="">
                     <h3 class="textoOpcao">${opcoes[j].text}</h3>
                 </div>
             `;
         }
     }
-    containerExibicao.classList.remove('escondido')
+    niveis = quiz.levels; 
+    const paginaInicial = document.querySelector(".app");
+    paginaInicial.classList.add('escondido');
+    containerExibicao.classList.remove('escondido');
 }
-function estaCorreto(elemento, id){
+function estaCorreto(elemento, id, resposta){
     const pai = elemento.parentNode;
     const opcoes = questoes[id].answers;
     const certo = opcoes.filter((objeto) => {
@@ -51,7 +54,12 @@ function estaCorreto(elemento, id){
           return true;
         }
     });
-    for(let i = 0; i < 4; i++){
+    if(resposta === true){
+        quantAcertos++;
+    }else{
+        quantErros++;
+    }
+    for(let i = 0; i < pai.childElementCount; i++){
         pai.children[i].removeAttribute("onclick");
         if(pai.children[i] !== elemento){
             const img = pai.children[i].children[0];
@@ -63,7 +71,33 @@ function estaCorreto(elemento, id){
             pai.children[i].children[1].classList.add("respostaErrada");
         }
     }
+    if(questoes.length === (quantAcertos+quantErros)){
+        resultado(id + 1);
+    }
     setTimeout(scrollar, 2000, id);
+}
+function resultado(id){
+    let nivel;
+    let quantQuestoes = quantAcertos + quantErros;
+    let resultado = (quantAcertos*100)/quantQuestoes;
+    resultado = Math.ceil(resultado);
+    const containerExibicao = document.querySelector(".containerExibicao");
+    for(let i = 0; i < niveis.length; i++){
+        if(resultado >= niveis[i].minValue){
+            nivel = niveis[i];
+        }
+    }
+    containerExibicao.innerHTML += `
+        <div class="questao" id="${id}">
+            <div class="caixaTituloFim" style="background-color: #EC362D">
+                <h2 class="tituloQuestao">${resultado}% de acerto: ${nivel.title}</h2>
+            </div>
+            <div class="fim">
+                <img class="imagemFim" src="${nivel.image}" alt="">
+                <h3 class="textoFim">${nivel.text}</h3>
+            </div>
+        </div>
+    `;
 }
 function scrollar(id){
     const elementoQueQueroQueApareca = document.getElementById(id+1);
@@ -71,4 +105,3 @@ function scrollar(id){
         elementoQueQueroQueApareca.scrollIntoView();
     }
 }
-pegarQuiz();

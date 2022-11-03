@@ -272,9 +272,11 @@ input[type=number] {
     align-items: center;
     margin-top: 42px;
     width: 759px;
-    height: 676px;
+    height: 100%;
     background-color: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    padding-bottom: 25px;
+    padding-top: 28px;
 }
 .caixaTitulo{
     display: flex;
@@ -317,6 +319,34 @@ input[type=number] {
 .respostaErrada{
     color: #FF4B4B;
 }
+.imagemFim{
+    width: 364px;
+    height: 273px;
+    margin-bottom: 9px;
+}
+.textoFim{
+    font-weight: 700;
+    font-size: 19px;
+    width: 328px;
+    height: 100%;
+    color: #484848;
+    margin-bottom: 15px;
+}
+.fim{
+    width: 727px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.caixaTituloFim{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 727px;
+    height: 99px;
+    background-color: #EC362D;
+    margin-bottom: 18px;
+}
 /*versão mobile*/
 @media (max-width: 1100px) {
     .divImagemQuiz{
@@ -327,7 +357,7 @@ input[type=number] {
     }
     .questao{
         width: 375px;
-        height: 436px;
+        height: 100%;
         margin-top: 24px;
     }
     .caixaTitulo{
@@ -349,5 +379,23 @@ input[type=number] {
     }
     .opcoes{
         width: 340px;
+    }
+    .imagemFim{
+        width: 340px;
+        height: 255px;
+        margin-bottom: 9px;
+    }
+    .textoFim{
+        width: 340px;
+        font-size: 17px;
+        margin-bottom: 5px;
+    }
+    .fim{
+        width: 340px;
+        flex-wrap: wrap;
+    }
+    .caixaTituloFim{
+        width: 340px;
+        margin-bottom: 9px;
     }
 }
