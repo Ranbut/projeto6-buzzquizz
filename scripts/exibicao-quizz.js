@@ -100,18 +100,18 @@ function resultado(id){
             </div>
         </div>
         <button class="botaoReiniciarQuiz" onclick="reiniciar()">Reiniciar Quizz</button>
-        <div class="voltaHome" onclick="voltarHome()">Voltar pra home</div>
+        <div class="voltaHome" onclick="voltaHome()">Voltar para home</div>
     `;
 }
 function reiniciar(){
     exibirQuiz(respostaAxio);
 }
-function voltarHome(){
-    const elementoQueQueroQueApareca = document.querySelector("header");
+function voltaHome(){
+    const elementoQueQueroQueApareca = document.querySelector(".header");
     elementoQueQueroQueApareca.scrollIntoView();
-    const containerExibicao = document.querySelector(".containerExibicao");
-    const paginaInicial = document.querySelector("pagina-inicial");
+    const paginaInicial = document.querySelector(".pagina-inicial");
     paginaInicial.classList.remove('escondido');
+    const containerExibicao = document.querySelector(".containerExibicao");
     containerExibicao.classList.add('escondido');
 }
 function scrollar(id){
