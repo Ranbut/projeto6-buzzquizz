@@ -17,16 +17,15 @@
             BuzzQuizz
         </header>
         <div class="app">
-                <div class="pagina-inicial">
-                    <div class="criar-quizz-container">
-                        <p>Você não criou um quizz ainda :(</p>
-                        <button onclick="criarQuizz()">Criar Quizz</button>
-                    </div>
-                    <div class="todos-quizzes">
-                        <h3>Todos os Quizzes</h3>
-                        <div class="lista-quizzes">
-                            
-                        </div>
+            <div class="pagina-inicial escondido">
+                <div class="criar-quizz-container">
+                    <p>Você não criou um quizz ainda :(</p>
+                    <button onclick="criarQuizz()">Criar Quizz</button>
+                </div>
+                <div class="todos-quizzes">
+                    <h3>Todos os Quizzes</h3>
+                    <div class="lista-quizzes">
+                        
                     </div>
                 </div>
             </div>
@@ -114,7 +113,7 @@
                     <button type="submit" class=botao-confirmacao>Prosseguir pra criar níveis</button>
                 </form>
             </div>
-            <div class="criacao-nivel-quiz escondido">
+            <div class="criacao-nivel-quiz">
                 <h4>Agora, decida os níveis</h4>
                 <form class="container-forms">
                     <div class="form-nivel">
@@ -153,14 +152,26 @@
                             <ion-icon name="create-outline" onclick="mostrarFormNivel(this)"></ion-icon>
                         </div>
                         <div class="input-container escondido">
-                            <input required class="titulo-nivel" type="text" placeholder="Título do nível" minlength="10">
-                            <input required class="percentual-acerto" type="number" placeholder="% de acerto mínima" min="0" max="100">
-                            <input required class="url-imagem" type="url" placeholder="URL da imagem do nível">
-                            <textarea required class="descricao-nivel" type="text" placeholder="Descrição do nível" minlength="30"></textarea>
+                            <input class="titulo-nivel" type="text" placeholder="Título do nível" minlength="10">
+                            <input class="percentual-acerto" type="number" placeholder="% de acerto mínima" min="0" max="100">
+                            <input class="url-imagem" type="url" placeholder="URL da imagem do nível">
+                            <textarea class="descricao-nivel" type="text" placeholder="Descrição do nível" minlength="30"></textarea>
                         </div>
                     </div>
                     <button type="submit" class=botao-confirmacao>Finalizar Quizz</button>
                 </form>
+            </div>
+            <div class="confirmacao-criacao escondido">
+                <h4>Seu quizz está pronto!</h4>
+                <div class="quiz-recem-criado">
+                    <div class="quiz fundo">
+                        <p>Algum texto aqui</p>
+                    </div>
+                </div>
+                <button class="botao-confirmacao">
+                    Acessar Quizz
+                </button>
+                <p class="voltaHome">Voltar para home</p>
             </div>
             <!--parte de exibibição do quiz -->
             <div class="containerExibicao escondido"></div>

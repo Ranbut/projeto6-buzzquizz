@@ -6,12 +6,16 @@ function pegarQuizzes (){
 }
 
 function renderizarQuizzes(quizzes) {
+  // Todos os quizzes
   const listaQuizzes = document.querySelector('.lista-quizzes')
   listaQuizzes.innerHTML = ''
   quizzes.forEach(quiz => {
     const quizHTML = construirHTMLQuiz(quiz)
     listaQuizzes.innerHTML += quizHTML
   });
+
+  // Quizzes do Usuário
+  
 }
 
 function construirHTMLQuiz(quizz) {
@@ -19,7 +23,7 @@ function construirHTMLQuiz(quizz) {
     <div
       onclick="pegarQuiz(${quizz.id})" 
       class="quiz" 
-      style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('${quizz.image}')"
+      style="background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('${quizz.image}')"
     >
     <p>
       ${quizz.title}
