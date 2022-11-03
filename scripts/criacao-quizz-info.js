@@ -51,10 +51,10 @@ function criarPerguntas(){
                     <h5>Respostas incorretas</h5>
                     <input required class="texto-incorreto" type="text" placeholder="Resposta incorreta 1" />
                     <input required class="url-imagem-incorreto" type="url" placeholder="URL da imagem 1" />
-                    <input required class="texto-incorreto" type="text" placeholder="Resposta incorreta 2" />
-                    <input required class="url-imagem-incorreto" type="url" placeholder="URL da imagem 2" />
-                    <input required class="texto-incorreto" type="text" placeholder="Resposta incorreta 3" />
-                    <input required class="url-imagem-incorreto" type="url" placeholder="URL da imagem 3" />
+                    <input class="texto-incorreto" type="text" placeholder="Resposta incorreta 2" />
+                    <input class="url-imagem-incorreto" type="url" placeholder="URL da imagem 2" />
+                    <input class="texto-incorreto" type="text" placeholder="Resposta incorreta 3" />
+                    <input class="url-imagem-incorreto" type="url" placeholder="URL da imagem 3" />
                 </div>
             </div>`
 

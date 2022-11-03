@@ -11,8 +11,8 @@ function construirArraysPgt() {
         const corPgt = document.querySelectorAll('.cor-pergunta')[i].value;
     
         //Resposta Correta
-        const rCorretoTextoPgt = document.querySelectorAll('.texto-correto').value;
-        const rCorretoImagemPgt = document.querySelectorAll('.url-imagem-correto').value;
+        const rCorretoTextoPgt = document.querySelectorAll('.texto-correto')[i].value;
+        const rCorretoImagemPgt = document.querySelectorAll('.url-imagem-correto')[i].value;
   
         //Respostas Incorretas
         const rIncorretoTextoPgt1 = document.querySelectorAll('.texto-incorreto')[0 + i].value;
@@ -22,32 +22,43 @@ function construirArraysPgt() {
         const rIncorretoTextoPgt3 = document.querySelectorAll('.texto-incorreto')[2 + i].value;
         const rIncorretoImagemPgt3 = document.querySelectorAll('.url-imagem-incorreto')[2 + i].value;
 
+        let pgt = [];
+
+        pgt.push({
+          text: rCorretoTextoPgt,
+          image: rCorretoImagemPgt,
+          isCorrectAnswer: true
+        })
+
+        if(rIncorretoTextoPgt1 !== ""){
+          pgt.push({
+            text: rIncorretoTextoPgt1,
+            image: rIncorretoImagemPgt1,
+            isCorrectAnswer: false
+          });
+        }
+
+        if(rIncorretoTextoPgt2 !== ""){
+          pgt.push({
+            text: rIncorretoTextoPgt2,
+            image: rIncorretoImagemPgt2,
+            isCorrectAnswer: false
+          });
+        }
+
+        if(rIncorretoTextoPgt3 !== ""){
+          pgt.push({
+            text: rIncorretoTextoPgt3,
+            image: rIncorretoImagemPgt3,
+            isCorrectAnswer: false
+          });
+        }
+
         //Objeto da Pergunta
         const pgtObj = {
             title: tituloPgt,
             color: corPgt,
-            answers: [
-                {
-                  text: rCorretoTextoPgt,
-                  image: rCorretoImagemPgt,
-                  isCorrectAnswer: true
-                },
-                {
-                  text: rIncorretoTextoPgt1,
-                  image: rIncorretoImagemPgt1,
-                  isCorrectAnswer: false
-                },
-                {
-                  text: rIncorretoTextoPgt2,
-                  image: rIncorretoImagemPgt2,
-                  isCorrectAnswer: false
-                },
-                {
-                  text: rIncorretoTextoPgt3,
-                  image: rIncorretoImagemPgt3,
-                  isCorrectAnswer: false
-                }
-              ]
+            answers: pgt
           }
           //Coloque a pergunta juntos com os outros
           perguntas = [...perguntas, pgtObj];
@@ -55,9 +66,9 @@ function construirArraysPgt() {
 }
 
 function perguntasValida(){
-    //Ainda para adicionar
+  //Ainda para adicionar
 
-    return true;
+  return true;
 }
 
 function criarNiveis(){

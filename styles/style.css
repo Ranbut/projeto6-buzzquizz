@@ -98,8 +98,6 @@ input[type=number] {
 }
 
 .add-quizz{
-    display: inline-block;
-    margin-right: 10px;
     width: 31px;
     height: 30px;
     color: #FFFFFF;
