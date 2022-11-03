@@ -23,7 +23,7 @@ function infomacaoValida(){
 }
 
 function criarPerguntas(){
-
+    
      if (infomacaoValida()){
         const fecharElemento = document.querySelector(".criacao-informacao-quiz");
         const abrirElement = document.querySelector(".criacao-perguntas-quiz")
@@ -57,7 +57,6 @@ function criarPerguntas(){
 
             abrirElement.innerHTML += templatePgt;
         }
-
         console.log("Perguntas do quizz");
     }
     else{
