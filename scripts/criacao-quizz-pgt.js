@@ -1,16 +1,20 @@
 let perguntas = [] //Questions
 
 
-function construirArrayPgt() {
+function construirArraysPgt() {
 
+    //Repita processo para todas as perguntas
     for(let i = 0; i < qtdPerguntas; i++){
 
+        //Pergunta
         const tituloPgt = document.querySelectorAll('.texto-pergunta')[i].value;
         const corPgt = document.querySelectorAll('.cor-pergunta')[i].value;
     
+        //Resposta Correta
         const rCorretoTextoPgt = document.querySelectorAll('.texto-correto').value;
         const rCorretoImagemPgt = document.querySelectorAll('.url-imagem-correto').value;
   
+        //Respostas Incorretas
         const rIncorretoTextoPgt1 = document.querySelectorAll('.texto-incorreto')[0 + i].value;
         const rIncorretoImagemPgt1 = document.querySelectorAll('.url-imagem-incorreto')[0 + i].value;
         const rIncorretoTextoPgt2 = document.querySelectorAll('.texto-incorreto')[1 + i].value;
@@ -18,6 +22,7 @@ function construirArrayPgt() {
         const rIncorretoTextoPgt3 = document.querySelectorAll('.texto-incorreto')[2 + i].value;
         const rIncorretoImagemPgt3 = document.querySelectorAll('.url-imagem-incorreto')[2 + i].value;
     
+        //Objeto da Pergunta
         const pgtObj = {
             title: tituloPgt,
             color: corPgt,
@@ -44,11 +49,14 @@ function construirArrayPgt() {
                 }
               ]
           }
+          //Coloque a pergunta juntos com os outros
           perguntas = [...perguntas, pgtObj];
     }
 }
 
 function perguntasValida(){
+    //Ainda para adicionar
+
     return true;
 }
 
