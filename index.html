@@ -20,7 +20,7 @@
             <div class="pagina-inicial">
                 <div class="criar-quizz-container">
                     <p>Você não criou um quizz ainda :(</p>
-                    <button onclick="criarQuizz()">Criar Quizz</button>
+                    <button onclick="btnCriarQuizz()">Criar Quizz</button>
                 </div>
                 <div class="usuario-quizzes escondido">
                     <h3>Seus Quizzes</h3>
@@ -40,14 +40,14 @@
                 <form class="container-forms">
                     <div class="form-nivel">
                         <div class="input-container">
-                            <input required class="titulo-quizz" type="text" name="titulo-quizz" placeholder="Título do seu quizz"
+                            <input required class="titulo-quizz" type="text" placeholder="Título do seu quizz"
                                 minlength="20" maxlength="65" />
-                            <input required class="url-imagem-quizz" type="url" name="url-imagem-quizz" placeholder="URL da imagem do seu quizz" />
-                            <input required class="quantidade-perguntas-quizz" type="number" name="quantidade-perguntas-quizz" placeholder="Quantidade de perguntas do quizz"  min="3" />
-                            <input required class="quantidade-niveis-quizz" type="number" name="quantidade-niveis-quizz" placeholder="Quantidade de níveis do quizz" min="2" />
+                            <input required class="url-imagem-quizz" type="url" placeholder="URL da imagem do seu quizz" />
+                            <input required class="quantidade-perguntas-quizz" type="number" placeholder="Quantidade de perguntas do quizz"  min="3" />
+                            <input required class="quantidade-niveis-quizz" type="number" placeholder="Quantidade de níveis do quizz" min="2" />
                         </div>
                     </div>
-                    <button type="submit" class=botao-confirmacao>Prosseguir pra criar perguntas</button>
+                    <button type="text" class=botao-confirmacao onclick="criarPerguntas()">Prosseguir pra criar perguntas</button>
                 </form>
             </div>
             <div class="criacao-perguntas-quiz escondido">
@@ -61,7 +61,7 @@
                         <div class="input-container">
                             <input required class="texto-pergunta" type="text" placeholder="Texto da pergunta"
                                 minlength="20" />
-                            <input required class="cor-pergunta" type="color" value="#EC362D" placeholder="Cor de fundo da pergunta" />
+                            <input required class="cor-pergunta" type="text" value="#EC362D" placeholder="Cor de fundo da pergunta" />
                             <h5>Resposta correta</h5>
                             <input required class="texto-correto" type="text" placeholder="Resposta correta" />
                             <input required class="url-imagem-correto" type="url" placeholder="URL da imagem" />
@@ -82,7 +82,7 @@
                         <div class="input-container">
                             <input required class="texto-pergunta" type="text" placeholder="Texto da pergunta"
                                 minlength="20" />
-                            <input required class="cor-pergunta" type="color" value="#EC362D" placeholder="Cor de fundo da pergunta" />
+                            <input required class="cor-pergunta" type="text" value="#EC362D" placeholder="Cor de fundo da pergunta" />
                             <h5>Resposta correta</h5>
                             <input required class="texto-correto" type="text" placeholder="Resposta correta" />
                             <input required class="url-imagem-correto" type="url" placeholder="URL da imagem" />
@@ -95,28 +95,7 @@
                             <input required class="url-imagem-incorreto" type="url" placeholder="URL da imagem 3" />
                         </div>
                     </div>
-                    <div class="form-nivel">
-                        <div class="form-header">
-                            <h5>Pergunta 3</h5>
-                            <ion-icon onclick="mostrarFormNivel(this)" name="create-outline"></ion-icon>
-                        </div>
-                        <div class="input-container">
-                            <input required class="texto-pergunta" type="text" placeholder="Texto da pergunta"
-                                minlength="20" />
-                            <input required class="cor-pergunta" type="color" value="#EC362D" placeholder="Cor de fundo da pergunta" />
-                            <h5>Resposta correta</h5>
-                            <input required class="texto-correto" type="url" placeholder="Resposta correta" />
-                            <input required class="url-imagem-correto" type="text" placeholder="URL da imagem" />
-                            <h5>Respostas incorretas</h5>
-                            <input required class="texto-incorreto" type="url" placeholder="Resposta incorreta 1" />
-                            <input required class="url-imagem-incorreto" type="text" placeholder="URL da imagem 1" />
-                            <input required class="texto-incorreto" type="url" placeholder="Resposta incorreta 2" />
-                            <input required class="url-imagem-incorreto" type="text" placeholder="URL da imagem 2" />
-                            <input required class="texto-incorreto" type="text" placeholder="Resposta incorreta 3" />
-                            <input required class="url-imagem-incorreto" type="url" placeholder="URL da imagem 3" />
-                        </div>
-                    </div>
-                    <button type="submit" class=botao-confirmacao>Prosseguir pra criar níveis</button>
+                    <button type="submit" class=botao-confirmacao onclick="criarNiveis">Prosseguir pra criar níveis</button>
                 </form>
             </div>
             <div class="criacao-nivel-quiz escondido">
@@ -190,6 +169,7 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="./scripts/app.js"></script>
     <script src="./scripts/exibicao-quizz.js"></script>
+    <script src="./scripts/criacao-quizz-info.js"></script>
     <script src="./scripts/criacao-quizz.js"></script>
     <script src="./scripts/pegarQuizzes.js"></script>
 </body>
