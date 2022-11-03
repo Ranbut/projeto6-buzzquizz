@@ -249,6 +249,7 @@ input[type=number] {
     align-items: center;
     height: 100%;
     width: 100%;
+    padding-bottom: 85px;
 }
 .divImagemQuiz{
     display: flex;
@@ -347,6 +348,32 @@ input[type=number] {
     background-color: #EC362D;
     margin-bottom: 18px;
 }
+.botaoReiniciarQuiz{
+    margin-top: 57px;
+    margin-bottom: 16px;
+    border: none;
+    width: 260px;
+    height: 52px;
+    background-color: #EC362D;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 21px;
+}
+.botaoReiniciarQuiz:hover{
+    cursor: pointer;
+}
+.voltaHome:hover{
+    cursor: pointer;
+}
+.voltaHome{
+    width: 220px;
+    height: 44px;
+    font-size: 21px;
+    color: #818181;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 /*versão mobile*/
 @media (max-width: 1100px) {
     .divImagemQuiz{
@@ -397,5 +424,13 @@ input[type=number] {
     .caixaTituloFim{
         width: 340px;
         margin-bottom: 9px;
+    }
+    .botaoReiniciarQuiz{
+        width: 220px;
+        height: 44px;
+        font-size: 18px;
+    }
+    .voltaHome{
+        font-size: 18px;
     }
 }

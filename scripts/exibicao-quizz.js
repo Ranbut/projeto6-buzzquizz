@@ -1,4 +1,4 @@
-let questoes, niveis, quantAcertos = 0, quantErros = 0;
+let questoes, niveis, quantAcertos, quantErros, respostaAxio;
 function comparador() { 
 	return Math.random() - 0.5; 
 }
@@ -7,10 +7,15 @@ function pegarQuiz(id){
     promessa.then(exibirQuiz);
 }
 function exibirQuiz(resposta){
+    quantAcertos = 0, quantErros = 0
+    respostaAxio = resposta;
     const elementoQueQueroQueApareca = document.querySelector("header");
     elementoQueQueroQueApareca.scrollIntoView();
     const quiz = resposta.data;
     const containerExibicao = document.querySelector(".containerExibicao");
+    const paginaInicial = document.querySelector(".app");
+    paginaInicial.classList.add('escondido');
+    containerExibicao.classList.remove('escondido');
     containerExibicao.innerHTML = `
         <div class="divImagemQuiz" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${quiz.image});"> 
             <h1 class="tituloQuiz">${quiz.title}</h1>
@@ -42,11 +47,8 @@ function exibirQuiz(resposta){
         }
     }
     niveis = quiz.levels; 
-    const paginaInicial = document.querySelector(".app");
-    paginaInicial.classList.add('escondido');
-    containerExibicao.classList.remove('escondido');
 }
-function estaCorreto(elemento, id, resposta){
+function estaCorreto(elemento, id, respostaMarcada){
     const pai = elemento.parentNode;
     const opcoes = questoes[id].answers;
     const certo = opcoes.filter((objeto) => {
@@ -54,7 +56,7 @@ function estaCorreto(elemento, id, resposta){
           return true;
         }
     });
-    if(resposta === true){
+    if(respostaMarcada === true){
         quantAcertos++;
     }else{
         quantErros++;
@@ -88,8 +90,8 @@ function resultado(id){
         }
     }
     containerExibicao.innerHTML += `
-        <div class="questao" id="${id}">
-            <div class="caixaTituloFim" style="background-color: #EC362D">
+        <div class="questao divFim" id="${id}">
+            <div class="caixaTituloFim">
                 <h2 class="tituloQuestao">${resultado}% de acerto: ${nivel.title}</h2>
             </div>
             <div class="fim">
@@ -97,7 +99,20 @@ function resultado(id){
                 <h3 class="textoFim">${nivel.text}</h3>
             </div>
         </div>
+        <button class="botaoReiniciarQuiz" onclick="reiniciar()">Reiniciar Quizz</button>
+        <div class="voltaHome" onclick="voltarHome()">Voltar pra home</div>
     `;
+}
+function reiniciar(){
+    exibirQuiz(respostaAxio);
+}
+function voltarHome(){
+    const elementoQueQueroQueApareca = document.querySelector("header");
+    elementoQueQueroQueApareca.scrollIntoView();
+    const containerExibicao = document.querySelector(".containerExibicao");
+    const paginaInicial = document.querySelector(".app");
+    paginaInicial.classList.remove('escondido');
+    containerExibicao.classList.add('escondido');
 }
 function scrollar(id){
     const elementoQueQueroQueApareca = document.getElementById(id+1);
