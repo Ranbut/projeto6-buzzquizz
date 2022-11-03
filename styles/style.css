@@ -97,6 +97,21 @@ input[type=number] {
     border-radius: 50px;
 }
 
+.add-quizz{
+    display: inline-block;
+    margin-right: 10px;
+    width: 31px;
+    height: 30px;
+    color: #FFFFFF;
+    background-color: #EC362D;
+    border-radius: 500px;
+    transition: all 300ms linear;
+}
+
+.add-quizz:hover{
+    background-color: #f36e67;
+}
+
 /* Lista de Quizzes */
 
 .todos-quizzes, .usuario-quizzes {

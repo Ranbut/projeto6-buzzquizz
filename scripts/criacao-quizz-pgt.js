@@ -21,7 +21,7 @@ function construirArraysPgt() {
         const rIncorretoImagemPgt2 = document.querySelectorAll('.url-imagem-incorreto')[1 + i].value;
         const rIncorretoTextoPgt3 = document.querySelectorAll('.texto-incorreto')[2 + i].value;
         const rIncorretoImagemPgt3 = document.querySelectorAll('.url-imagem-incorreto')[2 + i].value;
-    
+
         //Objeto da Pergunta
         const pgtObj = {
             title: tituloPgt,
@@ -63,7 +63,7 @@ function perguntasValida(){
 function criarNiveis(){
     if (perguntasValida()){
 
-        construirArrayPgt();
+        construirArraysPgt();
 
         const fecharElemento = document.querySelector(".criacao-perguntas-quiz");
         const abrirElement = document.querySelector(".criacao-nivel-quiz")
