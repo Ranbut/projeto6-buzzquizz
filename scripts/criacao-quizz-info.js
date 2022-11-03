@@ -23,25 +23,28 @@ function infomacaoValida(){
 }
 
 function criarPerguntas(){
-    
+
      if (infomacaoValida()){
         const fecharElemento = document.querySelector(".criacao-informacao-quiz");
         const abrirElement = document.querySelector(".criacao-perguntas-quiz")
-        
+
         fecharElemento.classList.add("escondido");
         abrirElement.classList.remove("escondido");
     
-        for(let i = 3; i < qtdPerguntas; i++){
+        const HTML = document.querySelector(".criacao-perguntas-quiz .container-forms");
+        const btn = `<button type="submit" class=botao-confirmacao onclick="criarNiveis()">Prosseguir pra criar níveis</button>`
+
+        for(let i = 0; i < qtdPerguntas; i++){
             const templatePgt = 
             `<div class="form-nivel">
                 <div class="form-header">
-                    <h5>Pergunta ${i}</h5>
+                    <h5>Pergunta ${i + 1}</h5>
                     <ion-icon onclick="mostrarFormNivel(this)" name="create-outline"></ion-icon>
                 </div>
                 <div class="input-container">
                     <input required class="texto-pergunta" type="text" placeholder="Texto da pergunta"
                         minlength="20" />
-                    <input required class="cor-pergunta" type="color" value="#EC362D" placeholder="Cor de fundo da pergunta" />
+                    <input required class="cor-pergunta" type="text" value="#EC362D" placeholder="Cor de fundo da pergunta" />
                     <h5>Resposta correta</h5>
                     <input required class="texto-correto" type="text" placeholder="Resposta correta" />
                     <input required class="url-imagem-correto" type="url" placeholder="URL da imagem" />
@@ -55,8 +58,10 @@ function criarPerguntas(){
                 </div>
             </div>`
 
-            abrirElement.innerHTML += templatePgt;
+            HTML.innerHTML += templatePgt;
         }
+
+        HTML.innerHTML += btn;
         console.log("Perguntas do quizz");
     }
     else{
