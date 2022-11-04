@@ -67,9 +67,23 @@ function construirArraysPgt() {
 }
 
 function perguntasValida(){
-  //Ainda para adicionar
 
-  return true;
+  let valido = false;
+  const hex = /[0-9A-Fa-f#]{7}/g;
+
+  for(let i = 0; i < qtdPerguntas; i++){
+    const corPgt = document.querySelectorAll('.cor-pergunta')[i].value;
+
+    if(corPgt.match(hex)){
+      valido = true;
+    }
+    else{
+      valido = false;
+      break;
+    }
+  }
+
+  return valido;
 }
 
 function criarNiveis(evento){
