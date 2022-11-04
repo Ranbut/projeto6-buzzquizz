@@ -29,6 +29,8 @@ function renderizarQuizzes(quizzes) {
 
     if (listaQuizzesUsuario.length === 0) return
 
+    quizzesUsuario.innerHTML = ''
+
     listaQuizzesUsuario.forEach(quiz => {
       const quizUsuarioHTML = construirHTMLQuiz(quiz)
       quizzesUsuario.innerHTML += quizUsuarioHTML

@@ -13,6 +13,57 @@ function mostrarOuEsconderEmTela(elemento) {
   elemento.classList.toggle('escondido')
 }
 
+function construirHTMLFormCriacaoNiveis (nivel) {
+  const formHTML = `
+    <div class="form-nivel">
+      <div class="form-header">
+        <h5>Nível ${nivel}</h5>
+        <ion-icon onclick="mostrarFormNivel(this)" name="create-outline"></ion-icon>
+      </div>
+      <div class="input-container">
+          <input 
+            required 
+            class="titulo-nivel" 
+            type="text" 
+            placeholder="Título do nível"
+            minlength="10" 
+          />
+          <input 
+            required 
+            class="percentual-acerto" 
+            type="number" 
+            placeholder="% de acerto mínima"
+            min="0" 
+            max="100" 
+          />
+          <input 
+            required 
+            class="url-imagem" 
+            type="url" 
+            placeholder="URL da imagem do nível" 
+          />
+          <textarea 
+            required 
+            class="descricao-nivel" 
+            placeholder="Descrição do nível"
+            minlength="30"
+          ></textarea>
+      </div>
+    </div>
+  `
+
+  return formHTML
+}
+
+function renderizarFormCriacaoDeNiveis() {
+  criacaoNivelForm.innerHTML = ''
+  for (let i = 0; i<qtdNiveis; i++) {
+    criacaoNivelForm.innerHTML += construirHTMLFormCriacaoNiveis(i + 1)
+  }
+
+  criacaoNivelForm.innerHTML += '<button type="submit" class=botao-confirmacao>Finalizar Quizz</button>'
+}
+
 function construirArrayNivel() {
   const tituloNivelInputs = criacaoNivel.querySelectorAll('.titulo-nivel')
   const percentualAcertoInputs = criacaoNivel.querySelectorAll('.percentual-acerto')
@@ -97,7 +148,7 @@ function construirConfirmaçãoHTML(novoQuizz) {
     <div 
       class="quiz" 
       style="background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('${novoQuizz.image}')"
-      onclick="pegarQuiz(${novoQuizz.id})"
+      onclick="handleClickNovoQuizz(${novoQuizz.id})"
     >
       <p>${novoQuizz.title}</p>
     </div>
@@ -108,7 +159,7 @@ function construirConfirmaçãoHTML(novoQuizz) {
 function renderizarContainerConfirmacaoCriacao(quiz) {
   const quizzHtml = construirConfirmaçãoHTML(quiz)
   containerQuizRecemCriado.innerHTML = quizzHtml
-  btnAcessarQuiz.setAttribute('onclick', `pegarQuiz(${quiz.id})`)
+  btnAcessarQuiz.setAttribute('onclick', `handleClickNovoQuizz(${quiz.id})`)
   mostrarOuEsconderEmTela(containerConfirmacaoCriacao)
 }
 
@@ -121,6 +172,11 @@ async function handleSubmit(e) {
   armazenarQuiz(objCriado.id)
   mostrarOuEsconderEmTela(criacaoNivel) 
   renderizarContainerConfirmacaoCriacao(objCriado)
+}
+
+function handleClickNovoQuizz(quizzId) {
+  pegarQuizzes()
+  pegarQuiz(quizzId)
 }
 
 function voltarHome() {
