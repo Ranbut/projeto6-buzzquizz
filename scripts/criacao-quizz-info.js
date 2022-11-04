@@ -32,7 +32,7 @@ function criarPerguntas(){
         abrirElement.classList.remove("escondido");
     
         const HTML = document.querySelector(".criacao-perguntas-quiz .container-forms");
-        const btn = `<button type="submit" class=botao-confirmacao onclick="criarNiveis()">Prosseguir pra criar níveis</button>`
+        const btn = `<button type="submit" class="botao-confirmacao">Prosseguir pra criar níveis</button>`
 
         for(let i = 0; i < qtdPerguntas; i++){
             const templatePgt = 
@@ -42,15 +42,15 @@ function criarPerguntas(){
                     <ion-icon onclick="mostrarFormNivel(this)" name="create-outline"></ion-icon>
                 </div>
                 <div class="input-container">
-                    <input required class="texto-pergunta" type="text" placeholder="Texto da pergunta"
+                    <input class="texto-pergunta" type="text" placeholder="Texto da pergunta"
                         minlength="20" />
-                    <input required class="cor-pergunta" type="text" value="#EC362D" placeholder="Cor de fundo da pergunta" />
+                    <input class="cor-pergunta" type="text" value="#EC362D" placeholder="Cor de fundo da pergunta" />
                     <h5>Resposta correta</h5>
-                    <input required class="texto-correto" type="text" placeholder="Resposta correta" />
-                    <input required class="url-imagem-correto" type="url" placeholder="URL da imagem" />
+                    <input class="texto-correto" type="text" placeholder="Resposta correta" />
+                    <input class="url-imagem-correto" type="url" placeholder="URL da imagem" />
                     <h5>Respostas incorretas</h5>
-                    <input required class="texto-incorreto" type="text" placeholder="Resposta incorreta 1" />
-                    <input required class="url-imagem-incorreto" type="url" placeholder="URL da imagem 1" />
+                    <input class="texto-incorreto" type="text" placeholder="Resposta incorreta 1" />
+                    <input class="url-imagem-incorreto" type="url" placeholder="URL da imagem 1" />
                     <input class="texto-incorreto" type="text" placeholder="Resposta incorreta 2" />
                     <input class="url-imagem-incorreto" type="url" placeholder="URL da imagem 2" />
                     <input class="texto-incorreto" type="text" placeholder="Resposta incorreta 3" />
@@ -60,8 +60,7 @@ function criarPerguntas(){
 
             HTML.innerHTML += templatePgt;
         }
-
-        HTML.innerHTML += btn;
+        HTML.innerHTML += btn
         console.log("Perguntas do quizz");
     }
     else{

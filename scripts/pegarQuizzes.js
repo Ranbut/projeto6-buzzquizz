@@ -25,7 +25,9 @@ function renderizarQuizzes(quizzes) {
 
     const listaQuizzesUsuario = quizzes.filter(quiz => (
       idQuizzesUsuario.indexOf(quiz.id) !== -1
-    ))
+    ));
+
+    if (listaQuizzesUsuario.length === 0) return
 
     listaQuizzesUsuario.forEach(quiz => {
       const quizUsuarioHTML = construirHTMLQuiz(quiz)

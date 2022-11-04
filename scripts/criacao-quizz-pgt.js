@@ -1,5 +1,6 @@
 let perguntas = [] //Questions
-
+const form = document.querySelector('.criacao-perguntas-quiz .container-forms')
+console.log(form)
 
 function construirArraysPgt() {
 
@@ -71,7 +72,9 @@ function perguntasValida(){
   return true;
 }
 
-function criarNiveis(){
+function criarNiveis(evento){
+  evento.preventDefault()
+  console.log('entrou na criarNiveis')
     if (perguntasValida()){
 
         construirArraysPgt();
@@ -89,3 +92,5 @@ function criarNiveis(){
         console.log("Validação incorreta!")
     }
 }
+
+form.addEventListener('submit', criarNiveis)
