@@ -3,6 +3,12 @@ Projeto n° 6 do curso de desenvolvimento fullstack da Driven.
 
 Esse projeto foi feito em equipe por:
 
+[Tarik Chuery](https://github.com/tarikochuery)
+
+[Laura Souza Castro](https://github.com/LauraSouzaCastro)
+
+[Vitor Gabriel](https://github.com/Ranbut)
+
 # Os Requisitos
 
 - Geral
