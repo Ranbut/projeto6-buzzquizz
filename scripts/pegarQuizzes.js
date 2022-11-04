@@ -21,7 +21,8 @@ function renderizarQuizzes(quizzes) {
   const quizzesUsuario = document.querySelector('.usuario-quizzes .lista-quizzes')
   const existeQuizzesDoUsuario = localStorage.getItem(QUIZZES_USUARIO_STORAGE_KEY)
   if(existeQuizzesDoUsuario) {
-    const idQuizzesUsuario = JSON.parse(localStorage.getItem(QUIZZES_USUARIO_STORAGE_KEY))
+    const objQuizzesUsuario = JSON.parse(localStorage.getItem(QUIZZES_USUARIO_STORAGE_KEY))
+    const idQuizzesUsuario = objQuizzesUsuario.map(quiz => quiz.id)
 
     const listaQuizzesUsuario = quizzes.filter(quiz => (
       idQuizzesUsuario.indexOf(quiz.id) !== -1

@@ -125,18 +125,19 @@ async function criarQuizz(quizObj) {
   let objCriado;
   const res = await axios.post(CREATE_QUIZ_URL, quizObj)
   objCriado = res.data
+  console.log(objCriado)
   return objCriado
 }
 
-function armazenarQuiz(quizId) {
+function armazenarQuiz(objQuizIdESecretKey) {
   let quizzesParaArmazenar;
   const QUIZ_KEY = 'quizzes-usuario'
   const existeQuizzArmazenado = localStorage.getItem(QUIZ_KEY) ? true : false
   if (existeQuizzArmazenado) {
     quizzesParaArmazenar = JSON.parse(localStorage.getItem(QUIZ_KEY))
-    quizzesParaArmazenar = [...quizzesParaArmazenar, quizId]
+    quizzesParaArmazenar = [...quizzesParaArmazenar, objQuizIdESecretKey]
   } else {
-    quizzesParaArmazenar = [quizId]
+    quizzesParaArmazenar = [objQuizIdESecretKey]
   }
 
   localStorage.setItem(QUIZ_KEY, JSON.stringify(quizzesParaArmazenar))
@@ -169,7 +170,7 @@ async function handleSubmit(e) {
   if (!quiz) return
 
   const objCriado = await criarQuizz(quiz)
-  armazenarQuiz(objCriado.id)
+  armazenarQuiz({id: objCriado.id, secretKey: objCriado.key})
   mostrarOuEsconderEmTela(criacaoNivel) 
   renderizarContainerConfirmacaoCriacao(objCriado)
 }
