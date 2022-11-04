@@ -361,6 +361,7 @@ input[type=number] {
     height: 100%;
     color: #484848;
     margin-bottom: 15px;
+    word-wrap: break-word;
 }
 .fim{
     width: 727px;
