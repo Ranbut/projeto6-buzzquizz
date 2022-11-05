@@ -1,4 +1,17 @@
+function carregando(){
+    const abrirElemento = document.querySelector(".loader-background")
+    console.log("Dados carregados!");
+    abrirElemento.classList.remove("escondido");
+}
+
+function carregamentoFeito(){
+    const fecharElemento = document.querySelector(".loader-background")
+    console.log("Dados carregados!");
+    fecharElemento.classList.add("escondido");
+}
+
 function btnCriarQuizz(id){
+    carregando();
     const fecharElemento = document.querySelector(".pagina-inicial");
     const abrirElement = document.querySelector(".criacao-informacao-quiz");
 
@@ -9,9 +22,11 @@ function btnCriarQuizz(id){
         document.querySelector(".url-imagem-quizz").value = "";
         document.querySelector(".quantidade-perguntas-quizz").value = "";
         document.querySelector(".quantidade-niveis-quizz").value = "";
+        carregamentoFeito();
     }else{
         const promessa = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`);
         promessa.then(colocarInformacoes);
+        promessa.then(carregamentoFeito());
     }
 }
 
