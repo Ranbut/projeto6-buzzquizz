@@ -91,7 +91,7 @@ Esse projeto foi feito em equipe por:
     - [X]  Ao clicar no botão de editar, o usuário deverá ser levado para um fluxo idêntico ao de criação de quizzes, porém os campos já virão preenchidos com os dados atuais do quizz, permitindo que o usuário os altere e prossiga confirme desejado. Assim como na criação, a cada etapa devem ser validados os valores que o usuário inputou
     - [x]  Ao finalizar a edição, caso volte pra home, a lista de quizzes do usuário deve ser obtida novamente
 - Bônus 3: Loadings
-    - [ ]  Adicione uma tela de loading (conforme layout) em todas as interações que demandem comunicação com o servidor:
+    - [X]  Adicione uma tela de loading (conforme layout) em todas as interações que demandem comunicação com o servidor:
         - Carregamento da lista de quizzes
         - Carregamento de um quizz
         - Criar / deletar / editar quiz
