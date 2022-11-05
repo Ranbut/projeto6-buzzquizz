@@ -9,6 +9,8 @@ Esse projeto foi feito em equipe por:
 
 [Vitor Gabriel](https://github.com/Ranbut)
 
+[Acesse o site clicando aqui!](https://ranbut.github.io/projeto6-buzzquizz/)
+
 # Os Requisitos
 
 - Geral
