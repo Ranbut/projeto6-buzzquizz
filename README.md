@@ -1,6 +1,8 @@
 # Projeto 6 - BuzzQuizz (Projetão n° 1)
 Projeto n° 6 do curso de desenvolvimento fullstack da Driven.
 
+[Acesse o site clicando aqui!](https://ranbut.github.io/projeto6-buzzquizz/)
+
 Esse projeto foi feito em equipe por:
 
 [Tarik Chuery](https://github.com/tarikochuery)
@@ -9,7 +11,6 @@ Esse projeto foi feito em equipe por:
 
 [Vitor Gabriel](https://github.com/Ranbut)
 
-[Acesse o site clicando aqui!](https://ranbut.github.io/projeto6-buzzquizz/)
 
 # Os Requisitos
 
