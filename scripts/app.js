@@ -37,6 +37,7 @@ function deletarQuizz(id){
             const re = axios.delete(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`, config);
             JSON.parse(localStorage.removeItem(QUIZ_KEY)[indexStorage]);
             re.then(alert("Quizz deletado com sucesso!"));
+            pegarQuizzes();
         }
         else{
             console.log("Ação cancelada!");
