@@ -16,12 +16,15 @@ function deletarQuizz(id){
     const storage = JSON.parse(localStorage.getItem(QUIZ_KEY));
     
     let idValido = false;
+    let indexStorage = 0;
 
     for (let i = 0; i < storage.length; i++) {
         const idQuizz = storage[i].id;
 
-        if(id === idQuizz)
+        if(id === idQuizz){
             idValido = true; 
+            indexStorage = i;
+        }
     }
 
     if(idValido){
@@ -31,7 +34,8 @@ function deletarQuizz(id){
     
         if(confirm("Você deseja deletar esse quizz?\nNão a como reverter essa não.")){
             console.log("Deletando o quizz!");
-                const re = axios.delete(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`, config);
+            const re = axios.delete(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`, config);
+            JSON.parse(localStorage.removeItem(QUIZ_KEY)[indexStorage]);
             re.then(alert("Quizz deletado com sucesso!"));
         }
         else{
