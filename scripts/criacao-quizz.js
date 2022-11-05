@@ -13,6 +13,36 @@ function mostrarOuEsconderEmTela(elemento) {
   elemento.classList.toggle('escondido')
 }
 
+function validarInputsNiveis(nivelObj) {
+  const {title, image, text, minValue} = nivelObj
+  let validacao = true;
+
+  const tituloEstaIncorreto = title.value.length < 10
+  const percentAcertosEstaIncorreto = minValue.value < 0 || minValue.value > 100 || !isNaN(Number(minValue.value))
+  const imagemEstaIncorreta = !validarUrl(image.value)
+  const descricaoEstaIncorreta = text.value.length < 30
+  console.log(text.value.length)
+
+  if (tituloEstaIncorreto) {
+    mostrarErro(title)
+    validacao = false
+  }
+  if (percentAcertosEstaIncorreto) {
+    mostrarErro(minValue)
+    validacao = false
+  }
+  if (imagemEstaIncorreta) {
+    mostrarErro(image)
+    validacao = false
+  }
+  if (descricaoEstaIncorreta) {
+    mostrarErro(text)
+    validacao = false
+  }
+
+  return validacao
+}
+
 function construirHTMLFormCriacaoNiveis (nivel) {
   const formHTML = `
     <div class="form-nivel">
@@ -21,33 +51,30 @@ function construirHTMLFormCriacaoNiveis (nivel) {
         <ion-icon onclick="mostrarFormNivel(this)" name="create-outline"></ion-icon>
       </div>
       <div class="input-container">
-          <input 
-            required 
+          <input  
             class="titulo-nivel" 
             type="text" 
-            placeholder="Título do nível"
-            minlength="10" 
+            placeholder="Título do nível" 
           />
-          <input 
-            required 
+          <span class="escondido erro">O valor informado deve ter, no mínimo, 10 caracteres.</span>
+          <input  
             class="percentual-acerto" 
             type="number" 
             placeholder="% de acerto mínima"
-            min="0" 
-            max="100" 
           />
-          <input 
-            required 
+          <span class="escondido erro">Pelo menos 1 percentual mínimo deve ser 0. O valor informado deve estar entre 0 e 100</span>
+          <input  
             class="url-imagem" 
             type="url" 
             placeholder="URL da imagem do nível" 
           />
-          <textarea 
-            required 
+          <span class="escondido erro">O valor informado não é uma URL válida.</span>
+          <textarea  
             class="descricao-nivel" 
             placeholder="Descrição do nível"
             minlength="30"
           ></textarea>
+          <span class="escondido erro">O valor informado deve ter, no mínimo, 30 caracteres.</span>
       </div>
     </div>
   `
@@ -57,7 +84,7 @@ function construirHTMLFormCriacaoNiveis (nivel) {
 
 function renderizarFormCriacaoDeNiveis() {
   criacaoNivelForm.innerHTML = ''
-  for (let i = 0; i<qtdNiveis; i++) {
+  for (let i = 0; i<qtdNiveis.value; i++) {
     criacaoNivelForm.innerHTML += construirHTMLFormCriacaoNiveis(i + 1)
   }
   criacaoNivelForm.innerHTML += '<button type="submit" class=botao-confirmacao>Finalizar Quizz</button>'
@@ -69,10 +96,9 @@ function construirArrayNivel() {
   const urlImagemInputs = criacaoNivel.querySelectorAll('.url-imagem')
   const descricaoTextAreas = criacaoNivel.querySelectorAll('textarea')
   let existePeloMenosUmPercentual0 = false
+  let todosOsInputsEstaoCorretos = true
 
   tituloNivelInputs.forEach((input, idx) => {
-    const umCampoVazio = input.value === '' || urlImagemInputs[idx] === '' || descricaoTextAreas[idx] === '' || percentualAcertoInputs === ''
-    if(umCampoVazio) return
     
     const nivelObj = {
       title: '',
@@ -80,19 +106,38 @@ function construirArrayNivel() {
       text: '',
       minValue: 0
     }
-
+    
     nivelObj.title = input.value
     nivelObj.image = urlImagemInputs[idx].value
     nivelObj.text = descricaoTextAreas[idx].value
     nivelObj.minValue = Number(percentualAcertoInputs[idx].value)
+
+    const todosInputsDaSecaoSaoValidos = validarInputsNiveis({
+      title: input,
+      image: urlImagemInputs[idx],
+      text: descricaoTextAreas[idx],
+      minValue: percentualAcertoInputs[idx]
+    })
+
+    if(!todosInputsDaSecaoSaoValidos) {
+      todosOsInputsEstaoCorretos = false
+      return
+    }
     
     if (nivelObj.minValue === 0) existePeloMenosUmPercentual0 = true
     levels = [...levels, nivelObj]
   })
 
+  if(!todosOsInputsEstaoCorretos) {
+    return false
+  }
+
   if(!existePeloMenosUmPercentual0) {
     alert('Deve existir pelo menos um percentual mínimo igual a 0')
-    percentualAcertoInputs.forEach(input => {input.value = ''})
+    percentualAcertoInputs.forEach((input, idx) => {
+      input.value = ''
+      mostrarErro(percentualAcertoInputs[idx])
+    })
     levels = []
     return false
   }
@@ -127,6 +172,7 @@ async function criarQuizz(quizObj) {
   console.log(objCriado)
   return objCriado
 }
+
 async function updateQuiz(quizObj){
   let objAtualizado;
   let id = idEdit;
@@ -135,6 +181,7 @@ async function updateQuiz(quizObj){
   console.log(objAtualizado);
   return objAtualizado;
 }
+
 function armazenarQuiz(objQuizIdESecretKey) {
   let quizzesParaArmazenar;
   const QUIZ_KEY = 'quizzes-usuario'
@@ -173,6 +220,8 @@ function renderizarContainerConfirmacaoCriacao(quiz) {
 let objCriado
 async function handleSubmit(e) {
   e.preventDefault()
+  resetarInputs()
+
   const quiz = construirQuizObj() 
   if (!quiz) return
   if(quizEdit !== ""){

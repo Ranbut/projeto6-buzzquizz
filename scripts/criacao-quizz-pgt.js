@@ -68,7 +68,7 @@ function construirArraysPgt() {
 
 function perguntasValida(){
 
-  let valido = false;
+  let valido = true;
   const hex = /[0-9A-Fa-f#]{7}/g;
 
   for(let i = 0; i < qtdPerguntas; i++){
@@ -88,6 +88,8 @@ function perguntasValida(){
 
 function criarNiveis(evento){
   evento.preventDefault()
+  resetarInputs()
+
   console.log('entrou na criarNiveis')
     if (perguntasValida()){
 

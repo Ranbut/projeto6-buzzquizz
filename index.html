@@ -39,11 +39,14 @@
                 <form class="container-forms" onsubmit="return false">
                     <div class="form-nivel">
                         <div class="input-container">
-                            <input required class="titulo-quizz" type="text" placeholder="Título do seu quizz"
-                                minlength="20" maxlength="65" />
-                            <input required class="url-imagem-quizz" type="url" placeholder="URL da imagem do seu quizz" />
-                            <input required class="quantidade-perguntas-quizz" type="number" placeholder="Quantidade de perguntas do quizz"  min="3" />
-                            <input required class="quantidade-niveis-quizz" type="number" placeholder="Quantidade de níveis do quizz" min="2" />
+                            <input class="titulo-quizz" type="text" placeholder="Título do seu quizz"/>
+                            <span class="escondido erro">O título deve ter uma quantidade de caracteres entre 20 e 65.</span>
+                            <input class="url-imagem-quizz" type="text" placeholder="URL da imagem do seu quizz" />
+                            <span class="escondido erro">O valor informado não é uma URL válida.</span>
+                            <input class="quantidade-perguntas-quizz" placeholder="Quantidade de perguntas do quizz"/>
+                            <span class="escondido erro">O quizz deve ter, no mínimo, 3 perguntas.</span>
+                            <input class="quantidade-niveis-quizz" placeholder="Quantidade de níveis do quizz" min="2" />
+                            <span class="escondido erro">O quizz deve ter, no mínimo, 2 níveis.</span>
                         </div>
                     </div>
                     <button type="submit" class=botao-confirmacao onclick="criarPerguntas()">Prosseguir pra criar perguntas</button>
@@ -55,7 +58,7 @@
                     
                 </form>
             </div>
-            <div class="criacao-nivel-quiz escondido">
+            <div class="criacao-nivel-quiz">
                 <h4>Agora, decida os níveis</h4>
                 <form class="container-forms">
                     

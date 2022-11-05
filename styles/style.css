@@ -433,6 +433,17 @@ input[type=number] {
     align-items: center;
     justify-content: center;
 }
+
+/* Mensagens de Erro */
+
+input.erro, textarea.erro {
+    background-color: #FFE9E9;
+}
+  
+span.erro {
+    color: #EC362D;
+}
+
 /*versão mobile*/
 @media (max-width: 1100px) {
     .divImagemQuiz{
