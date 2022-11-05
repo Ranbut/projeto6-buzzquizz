@@ -113,6 +113,7 @@ function voltaHome(){
     paginaInicial.classList.remove('escondido');
     const containerExibicao = document.querySelector(".containerExibicao");
     containerExibicao.classList.add('escondido');
+    window.location.reload();
 }
 function scrollar(id){
     const elementoQueQueroQueApareca = document.getElementById(id+1);

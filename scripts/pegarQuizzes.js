@@ -56,8 +56,8 @@ function construirHTMLQuiz(quizz) {
         </p>
       </div>
       <div class="opcoesEditaDeleta">
-        <ion-icon name="create-outline" onclick="editarQuiz(${quizz.id})"></ion-icon>
-        <ion-icon name="trash-outline" onclick="deletarQuiz(${quizz.id})"></ion-icon>
+        <ion-icon name="create-outline" onclick="editarQuizz(${quizz.id})"></ion-icon>
+        <ion-icon name="trash-outline" onclick="deletarQuizz(${quizz.id})"></ion-icon>
       </div>
     </div>
   `

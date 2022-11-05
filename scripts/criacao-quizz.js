@@ -60,7 +60,6 @@ function renderizarFormCriacaoDeNiveis() {
   for (let i = 0; i<qtdNiveis; i++) {
     criacaoNivelForm.innerHTML += construirHTMLFormCriacaoNiveis(i + 1)
   }
-
   criacaoNivelForm.innerHTML += '<button type="submit" class=botao-confirmacao>Finalizar Quizz</button>'
 }
 
@@ -128,7 +127,14 @@ async function criarQuizz(quizObj) {
   console.log(objCriado)
   return objCriado
 }
-
+async function updateQuiz(quizObj){
+  let objAtualizado;
+  let id = idEdit;
+  const res = await axios.put(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`,quizObj, keyEdit);
+  objAtualizado = res.data;
+  console.log(objAtualizado);
+  return objAtualizado;
+}
 function armazenarQuiz(objQuizIdESecretKey) {
   let quizzesParaArmazenar;
   const QUIZ_KEY = 'quizzes-usuario'
@@ -162,20 +168,25 @@ function renderizarContainerConfirmacaoCriacao(quiz) {
   containerQuizRecemCriado.innerHTML = quizzHtml
   btnAcessarQuiz.setAttribute('onclick', `handleClickNovoQuizz(${quiz.id})`)
   mostrarOuEsconderEmTela(containerConfirmacaoCriacao)
-}
 
+}
+let objCriado
 async function handleSubmit(e) {
   e.preventDefault()
   const quiz = construirQuizObj() 
   if (!quiz) return
-
-  const objCriado = await criarQuizz(quiz)
+  if(quizEdit !== ""){
+    objCriado = await updateQuiz(quiz);
+  }else{
+    objCriado = await criarQuizz(quiz);
+  }
   armazenarQuiz({id: objCriado.id, secretKey: objCriado.key})
   mostrarOuEsconderEmTela(criacaoNivel) 
   renderizarContainerConfirmacaoCriacao(objCriado)
 }
 
 function handleClickNovoQuizz(quizzId) {
+  document.querySelector(".confirmacao-criacao").classList.add("escondido");
   pegarQuizzes()
   pegarQuiz(quizzId)
 }
@@ -184,6 +195,7 @@ function voltarHome() {
   pegarQuizzes()
   mostrarOuEsconderEmTela(containerConfirmacaoCriacao)
   mostrarOuEsconderEmTela(home)
+  window.location.reload();
 }
 
 criacaoNivelForm.addEventListener('submit', handleSubmit)
