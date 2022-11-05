@@ -28,7 +28,7 @@ function deletarQuizz(id){
     }
 
     if(idValido){
-        const key = storage.secretKey;
+        const key = storage[indexStorage].secretKey;
 
         const config = { headers: { "Secret-Key": key } }
     
