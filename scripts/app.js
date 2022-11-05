@@ -18,7 +18,7 @@ function btnCriarQuizz(id){
 function deletarQuizz(id){
 
     const QUIZ_KEY = 'quizzes-usuario'
-    const storage = JSON.parse(localStorage.getItem(QUIZ_KEY));
+    let storage = JSON.parse(localStorage.getItem(QUIZ_KEY));
     
     let idValido = false;
     let indexStorage = 0;
@@ -40,10 +40,10 @@ function deletarQuizz(id){
         if(confirm("Você deseja deletar esse quizz?\nNão a como reverter essa não ação.")){
             console.log("Deletando o quizz!");
             const re = axios.delete(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`, config);
-            JSON.parse(localStorage.removeItem(QUIZ_KEY)[indexStorage]);
+            storage.splice(indexStorage, 1);
+            localStorage.setItem(QUIZ_KEY, JSON.stringify(storage));
             re.then(alert("Quizz deletado com sucesso!"));
             pegarQuizzes();
-            window.location.reload();
         }
         else{
             console.log("Ação cancelada!");
@@ -53,6 +53,7 @@ function deletarQuizz(id){
         alert("O quizz selecionado, não possui nenhum registro local.");
     }
 }
+
 let keyEdit, idEdit;
 function editarQuizz(id){
     const QUIZ_KEY = 'quizzes-usuario'
