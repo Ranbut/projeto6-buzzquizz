@@ -2,6 +2,7 @@ const BASE_URL = 'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes'
 function pegarQuizzes (){
   const res = axios.get(BASE_URL);
   res.then((res) => renderizarQuizzes(res.data))
+  res.then(carregamentoFeito);  
 }
 
 function renderizarQuizzes(quizzes) {

@@ -3,6 +3,7 @@ function comparador() {
 	return Math.random() - 0.5; 
 }
 function pegarQuiz(id){
+    carregando();
     const promessa = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`);
     promessa.then(exibirQuiz);
 }
@@ -47,6 +48,7 @@ function exibirQuiz(resposta){
         }
     }
     niveis = quiz.levels; 
+    carregamentoFeito();
 }
 function estaCorreto(elemento, id, respostaMarcada){
     const pai = elemento.parentNode;
