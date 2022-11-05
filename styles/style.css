@@ -109,7 +109,34 @@ input[type=number] {
 .add-quizz:hover{
     background-color: #f36e67;
 }
-
+.usuario-quizzes .opcoesEditaDeleta{
+    display: flex;
+}
+.divRelativa{
+    position: relative;
+}
+.opcoesEditaDeleta{
+    position: absolute;
+    top: 24px;
+    right: 0;
+    width: 43px;
+    height: 87px;
+    background-color: #EC362D;
+    border-radius: 10px 0px 0px 11px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 1;
+}
+.opcoesEditaDeleta ion-icon{
+    width: 18px;
+    height: 18px;
+    color: #FFFFFF;
+}
+.opcoesEditaDeleta ion-icon:hover{
+    cursor: pointer;
+}
 /* Lista de Quizzes */
 
 .todos-quizzes, .usuario-quizzes {
@@ -146,7 +173,6 @@ input[type=number] {
     cursor: pointer;
     background-size: cover;
     background-position: center;
-
     display: flex;
     align-items: flex-end;
     border-radius: 5px;
