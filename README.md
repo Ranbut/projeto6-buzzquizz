@@ -97,4 +97,4 @@ Esse projeto foi feito em equipe por:
         - Criar / deletar / editar quiz
     
 - Bônus 4: Exibir erros na validação
-    - [ ]  Altere o processo de criação/edição de quizzes para que, caso haja problemas de validação nos inputs, os erros sejam indicados abaixo dos campos em que ocorreram, seguindo o layout fornecido
+    - [X]  Altere o processo de criação/edição de quizzes para que, caso haja problemas de validação nos inputs, os erros sejam indicados abaixo dos campos em que ocorreram, seguindo o layout fornecido
