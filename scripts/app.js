@@ -52,7 +52,7 @@ function deletarQuizz(id){
 
         const config = { headers: { "Secret-Key": key } }
     
-        if(confirm("Você deseja deletar esse quizz?\nNão a como reverter essa não ação.")){
+        if(confirm("Você deseja deletar esse quizz?\nNão a como reverter essa ação.")){
             console.log("Deletando o quizz!");
             const re = axios.delete(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`, config);
             storage.splice(indexStorage, 1);
