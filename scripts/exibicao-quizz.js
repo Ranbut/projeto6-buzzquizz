@@ -40,7 +40,7 @@ function exibirQuiz(resposta){
             const pai = document.getElementById(i);
             const opcao = pai.children[1];
             opcao.innerHTML += `
-                <div onclick="estaCorreto(this, ${i}, ${opcoes[j].isCorrectAnswer})">
+                <div class="${opcoes[j].isCorrectAnswer}" onclick="estaCorreto(this, ${i}, ${opcoes[j].isCorrectAnswer})">
                     <img class="imagemOpcao" src="${opcoes[j].image}" alt="">
                     <h3 class="textoOpcao">${opcoes[j].text}</h3>
                 </div>
@@ -52,27 +52,22 @@ function exibirQuiz(resposta){
 }
 function estaCorreto(elemento, id, respostaMarcada){
     const pai = elemento.parentNode;
-    const opcoes = questoes[id].answers;
-    const certo = opcoes.filter((objeto) => {
-        if (objeto.isCorrectAnswer === true) {
-          return true;
-        }
-    });
+    const opIncorreta = pai.querySelectorAll(".false");
+    const opCorreta = pai.querySelectorAll(".true");
     if(respostaMarcada === true){
         quantAcertos++;
     }else{
         quantErros++;
+    }
+    opCorreta[0].children[1].classList.add("respostaCerta");
+    for(let i = 0; i < opIncorreta.length; i++){
+        opIncorreta[i].children[1].classList.add("respostaErrada");
     }
     for(let i = 0; i < pai.childElementCount; i++){
         pai.children[i].removeAttribute("onclick");
         if(pai.children[i] !== elemento){
             const img = pai.children[i].children[0];
             img.classList.add("esbranquicado");
-        }
-        if(pai.children[i].children[1].innerHTML === certo[0].text){
-            pai.children[i].children[1].classList.add("respostaCerta");
-        }else{
-            pai.children[i].children[1].classList.add("respostaErrada");
         }
     }
     if(questoes.length === (quantAcertos+quantErros)){
