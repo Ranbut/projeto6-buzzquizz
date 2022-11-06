@@ -20,7 +20,6 @@ function resetarInputs() {
     const mensagensDeErro = inputsComErro.map(input => input.nextElementSibling)
 
     inputsComErro.forEach(input => {
-        console.log(input)
         input.classList.remove('erro')
     })
     mensagensDeErro.forEach(mensagem => {
@@ -82,7 +81,6 @@ function criarPerguntas(){
         const btn = `<button type="submit" class="botao-confirmacao">Prosseguir pra criar níveis</button>`;
 
         for(let i = 0; i < qtdPerguntas.value; i++){
-            console.log('entrei no for')
             const templatePgt = 
             `<div class="form-nivel">
                 <div class="form-header">

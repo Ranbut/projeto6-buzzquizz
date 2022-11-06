@@ -18,7 +18,7 @@ function validarInputsNiveis(nivelObj) {
   let validacao = true;
 
   const tituloEstaIncorreto = title.value.length < 10
-  const percentAcertosEstaIncorreto = minValue.value < 0 || minValue.value > 100 || !isNaN(Number(minValue.value))
+  const percentAcertosEstaIncorreto = minValue.value < 0 || minValue.value > 100 || isNaN(Number(minValue.value))
   const imagemEstaIncorreta = !validarUrl(image.value)
   const descricaoEstaIncorreta = text.value.length < 30
   console.log(text.value.length)
@@ -157,8 +157,8 @@ function construirQuizObj() {
 
   const quizObj = {
     levels,
-    title: tituloQuizz,
-    image: imagemQuizz,
+    title: tituloQuizz.value,
+    image: imagemQuizz.value,
     questions: perguntas
   }
 
@@ -222,7 +222,8 @@ async function handleSubmit(e) {
   e.preventDefault()
   resetarInputs()
 
-  const quiz = construirQuizObj() 
+  const quiz = construirQuizObj()
+  console.log(quiz)
   if (!quiz) return
   if(quizEdit !== ""){
     objCriado = await updateQuiz(quiz);
