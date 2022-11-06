@@ -58,7 +58,7 @@ function deletarQuizz(id){
             storage.splice(indexStorage, 1);
             localStorage.setItem(QUIZ_KEY, JSON.stringify(storage));
             re.then(alert("Quizz deletado com sucesso!"));
-            pegarQuizzes();
+            window.location.reload();
         }
         else{
             console.log("Ação cancelada!");
