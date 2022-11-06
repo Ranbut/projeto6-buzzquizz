@@ -5,7 +5,7 @@ console.log(form)
 function construirArraysPgt() {
 
     //Repita processo para todas as perguntas
-    for(let i = 0; i < qtdPerguntas; i++){
+    for(let i = 0; i < qtdPerguntas.value; i++){
 
         //Pergunta
         const tituloPgt = document.querySelectorAll('.texto-pergunta')[i].value;
@@ -71,7 +71,7 @@ function perguntasValida(){
   let valido = true;
   const hex = /[0-9A-Fa-f#]{7}/g;
 
-  for(let i = 0; i < qtdPerguntas; i++){
+  for(let i = 0; i < qtdPerguntas.value; i++){
     const corPgt = document.querySelectorAll('.cor-pergunta')[i].value;
 
     if(corPgt.match(hex)){
